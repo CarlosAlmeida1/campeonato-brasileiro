@@ -2,17 +2,18 @@
 
 ## Gestão de equipes
 
-- [] Cadastrar Equipe
+- [x] Cadastrar Equipe
 - [] Editar Equipe
-- [] Excluir Equipe
+- [x] Excluir Equipe
 - [] Listar Equipes: Jogadores
 
 ## Gestão de jogadores
 
 - [x] Cadastrar Jogador
-- [] Editar Jogador
+- [x] Editar Jogador
 - [x] Excluir Jogador
 - [x] Registrar detalhe: Posição, Número de camisa
+- [x] Listar Jogadores
 
 ## Gestão de partidas
 

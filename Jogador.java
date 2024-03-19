@@ -34,7 +34,7 @@ public class Jogador {
   }
 
   public String toString(){
-    return nome;
+    return nome + " - " + posicao + " - " + numeroJogador;
   }
 
   
