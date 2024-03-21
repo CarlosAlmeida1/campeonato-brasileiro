@@ -3,9 +3,9 @@
 ## Gestão de equipes
 
 - [x] Cadastrar Equipe
-- [] Editar Equipe
+- [x] Editar Equipe
 - [x] Excluir Equipe
-- [] Listar Equipes: Jogadores
+- [x] Listar Equipes: Jogadores
 
 ## Gestão de jogadores
 

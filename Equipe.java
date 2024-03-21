@@ -29,4 +29,17 @@ public class Equipe {
   public void setJogadores(ArrayList<Jogador> jogadores) {
     this.jogadores = jogadores;
   }
+
+  public String toString (){
+    return "Nome da Equipe: " + nome;
+  }
+
+
+  public void adicionarJogador(Jogador jogador){
+    jogadores.add(jogador);
+  }
+
+  public void removerJogador(Jogador jogador){
+    jogadores.remove(jogador);
+  }
 }

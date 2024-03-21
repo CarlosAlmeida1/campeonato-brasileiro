@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.List;
 
 import  javax.swing.JOptionPane;
 
@@ -14,7 +13,7 @@ public class Main {
   String[] opcoes = {"Gerenciar jogadores", "Gerenciar Equipess", "Sair"};
  int opcaoSelecionada = 0;
  
-         while (opcaoSelecionada != 3) {
+         while (opcaoSelecionada != 2) {
      opcaoSelecionada = JOptionPane.showOptionDialog(null, "Selecione uma opção",
              "Menu inicial", JOptionPane.DEFAULT_OPTION,
              JOptionPane.QUESTION_MESSAGE, null, opcoes, opcoes[2]);
@@ -30,14 +29,14 @@ public class Main {
          
 public static void cadastrarJogadores(){
 
-      String[] opcoes2 = { "Cadastrar Jogador", "Deletar Jogador", "Editar Jogador", "Listar Jogadores",
-           "Sair"};
+  String[] opcoes2 = { "Cadastrar Jogador", "Deletar Jogador", "Editar Jogador", "Listar Jogadores"
+   ,"Sair"};
  int opcaoSelecionada2 = 0;
  
-               while (opcaoSelecionada2 != 3) {
+               while (opcaoSelecionada2 != 4) {
      opcaoSelecionada2 = JOptionPane.showOptionDialog(null, "Selecione uma opção",
              "Menu inicial", JOptionPane.DEFAULT_OPTION,
-             JOptionPane.QUESTION_MESSAGE, null, opcoes2, opcoes2[3]);
+             JOptionPane.QUESTION_MESSAGE, null, opcoes2, opcoes2[4]);
      
      if(opcaoSelecionada2 == 0){
          cadastrarJogador();
@@ -87,27 +86,34 @@ public static void cadastrarJogadores(){
   
   public static void listarJogadores(){
     String jogadores = "";
-    for (Jogador j : jogador) {
-      jogadores += j + "\n";
+    for (Jogador jogador : jogador) {
+      jogadores += "Nome: " + jogador.getNome() + " - Posição: " + jogador.getPosicao() + " - Número: " + jogador.getNumeroJogador() + "\n";
     }
     JOptionPane.showMessageDialog(null, jogadores);
   }
 
-  
-
   public static void cadastrarEquipes(){
-   String[] opcoes3 = {"Cadastrar Equipe", "Deletar Equipe", "Editar Equipe", "Listar Equipes", "Sair"};
+   String[] opcoes3 = {"Cadastrar Equipe", "Deletar Equipe", "Editar Equipe", "Listar Equipes", "Adicionar Jogadors","Sair"};
 
     int opcaoSelecionada3 = 0;
 
     while (opcaoSelecionada3 != 4) {
-      opcaoSelecionada3 = JOptionPane.showOptionDialog(null, "Selecione uma opção", "Menu inicial", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcoes3, opcoes3[3]);
+      opcaoSelecionada3 = JOptionPane.showOptionDialog(null, "Selecione uma opção", "Menu inicial", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcoes3, opcoes3[4]);
 
       if (opcaoSelecionada3 == 0) {
         cadastrarEquipe();
       } 
       else if (opcaoSelecionada3 == 1){
         excluirEquipe();
+      }
+      else if (opcaoSelecionada3 == 2){
+        editarEquipe();
+      }
+      else if (opcaoSelecionada3 == 3){
+        listarEquipes();
+      }
+      else if (opcaoSelecionada3 == 4){
+        adicionarJogadores();
       }
     }
 
@@ -127,7 +133,36 @@ public static void cadastrarJogadores(){
 
     equipe.remove(equipeSelecionada);
   }
-  
 
+  public static void editarEquipe(){
+    Object[] equipesCadastradas = equipe.toArray();
+
+    Equipe equipeSelecionada = (Equipe) JOptionPane.showInputDialog(null, "Escolha uma equipe", "Editar Equipe", JOptionPane.QUESTION_MESSAGE, null, equipesCadastradas, equipesCadastradas[0]);
+
+    String nome = JOptionPane.showInputDialog("Digite o nome da equipe", equipeSelecionada.getNome());
+    String tecnico = JOptionPane.showInputDialog("Digite o nome do técnico", equipeSelecionada.getTecnico());
+
+    equipeSelecionada.setNome(nome);
+    equipeSelecionada.setTecnico(tecnico);
+
+  }
+
+    public static void adicionarJogadores(){
+      Object[] adicionarJogadores = jogador.toArray();
+      Object[] equipesCadastradas = equipe.toArray();
+
+      Equipe equipeSelecionada = (Equipe) JOptionPane.showInputDialog(null, "Escolha uma equipe", "Adicionar Jogadores", JOptionPane.QUESTION_MESSAGE, null, equipesCadastradas, equipesCadastradas[0]);
+      Jogador jogadorSelecionado = (Jogador) JOptionPane.showInputDialog(null, "Escolha um jogador", "Adicionar Jogadores", JOptionPane.QUESTION_MESSAGE, null, adicionarJogadores, adicionarJogadores[0]);
+
+      equipeSelecionada.adicionarJogador(jogadorSelecionado);
+  }
+
+  public static void listarEquipes(){
+    String equipes = "";
+    for (Equipe equipe : equipe) {
+      equipes += "Nome: " + equipe.getNome() + " - Técnico: " + equipe.getTecnico() + "\n" + "Jogadores:" + equipe.getJogadores();
+    }
+    JOptionPane.showMessageDialog(null, equipes);
+  }
 
 }
